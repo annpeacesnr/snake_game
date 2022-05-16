@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
+import controller.TimerListener;
 
 import java.awt.BorderLayout;
 
@@ -13,6 +16,8 @@ public class GameBoard {
 
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
+    public static final int FPS = 4; //frames per second snake pace
+    public static final int DELAY = 1000 / FPS; //milliseconds
 
     private JFrame window;
     private MyCanvas canvas;
@@ -20,6 +25,7 @@ public class GameBoard {
     private JButton stopButton = new JButton("Stop");
     private JButton exitButton = new JButton("Exit");
     private JLabel scoreDisplay = new JLabel();
+    private Timer timer;
 
     public GameBoard(JFrame window) {
         this.window = window;
@@ -42,6 +48,9 @@ public class GameBoard {
         southPanel.add(stopButton);
         southPanel.add(exitButton);
         cp.add(BorderLayout.SOUTH, southPanel);
+
+        Timer timer = new Timer(DELAY, new TimerListener(this));
+        timer.start();
     }
     
 }
