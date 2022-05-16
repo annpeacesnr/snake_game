@@ -1,8 +1,12 @@
 package view;
 
 import javax.swing.JPanel;
+
+import model.GameElement;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -10,6 +14,7 @@ import java.awt.Dimension;
 public class MyCanvas extends JPanel {
 
     private GameBoard gameBoard;
+    private ArrayList<GameElement> figures = new ArrayList<>();
 
     public MyCanvas(GameBoard gameBoard, int width, int height) {
         this.gameBoard = gameBoard;
@@ -22,6 +27,10 @@ public class MyCanvas extends JPanel {
         super.paintComponent(g);
 
         Graphics g2 = (Graphics2D) g;
+
+        for (var f: figures) {
+            f.render(g2);
+        }
     }
     
 }

@@ -14,6 +14,7 @@ public class TimerListener implements ActionListener {
         this.gameBoard = gameBoard;
     }
 
+    // game loop
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println ("Timer went off!");
