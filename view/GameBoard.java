@@ -96,7 +96,7 @@ public class GameBoard {
             yloc = random.nextInt(GameBoard.HEIGHT / GameBoard.CELL_SIZE) * GameBoard.CELL_SIZE;
         } while (xloc == snake.x && yloc == snake.y);
 
-        Food food = new Food(xloc, yloc, Color.pink); //avoiding the snake head and body
+        Food food = new Food(xloc, yloc, Color.PINK); //avoiding the snake head and body
         canvas.getFigures().add(food);
     
         }

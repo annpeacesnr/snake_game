@@ -1,6 +1,10 @@
 package model.observerPattern;
 
+import model.Snake;
+import model.strategyPattern.SnakeMoveDeadStrategy;
+import model.strategyPattern.SnakeRenderDeadStrategy;
 import view.GameBoard;
+import view.Text;
 
 public class SnakeObserver implements Observer {
 
@@ -26,9 +30,11 @@ public class SnakeObserver implements Observer {
     }
 
     @Override
-    public void snakeLeftScene() {
-        // TODO Auto-generated method stub
-        
+    public void snakeLeftScene() { // observer to check if snake left scene
+        gameBoard.getCanvas().getFigures().add(new Text("Game Over - out of bounds!", 100, 200));
+        Snake snake = gameBoard.getSnake();
+        snake.setMoveStrategy(new SnakeMoveDeadStrategy(snake));
+        snake.setRenderStrategy(new SnakeRenderDeadStrategy(snake));
     }
 
     @Override

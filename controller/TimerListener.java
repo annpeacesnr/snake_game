@@ -41,6 +41,10 @@ public class TimerListener implements ActionListener {
         }
         if (snake == null) return;
 
+        // check if snake left game scene
+        if (snake.x < 0 || snake.x >= GameBoard.WIDTH || snake.y < 0 || snake.y >= GameBoard.HEIGHT)
+            snake.notifyObservers(Event.LeftScene);
+
         // snake vs food
         var removeFoods = new ArrayList<GameElement>();
         for (var f: figures) {

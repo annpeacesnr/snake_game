@@ -70,6 +70,10 @@ public class Snake extends GameElement implements Subject {
         this.moveStrategy = moveStrategy;
     }
 
+    public void setRenderStrategy(SnakeRenderStrategy renderStrategy) {
+        this.renderStrategy = renderStrategy;
+    }
+
     public ArrayList<GameElement> getComposite() {
         return composite;
     }
@@ -111,6 +115,9 @@ public class Snake extends GameElement implements Subject {
             case AtePoison:
                 break;
             case LeftScene:
+            for (var o: observers) {
+                o.snakeLeftScene();
+            }
                 break;
             case SelfCollision:
                 break;
