@@ -20,6 +20,7 @@ public class GameBoard {
     public static final int HEIGHT = 400;
     public static final int FPS = 4; //frames per second snake pace
     public static final int DELAY = 1000 / FPS; //milliseconds
+    public static final int CELL_SIZE = 20;
 
     private JFrame window;
     private MyCanvas canvas;
