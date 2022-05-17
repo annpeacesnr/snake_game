@@ -9,6 +9,7 @@ import model.strategyPattern.SnakeMoveAliveStrategy;
 import model.strategyPattern.SnakeMoveDeadStrategy;
 import model.strategyPattern.SnakeMoveStrategy;
 import model.strategyPattern.SnakeRenderAliveStrategy;
+import model.strategyPattern.SnakeRenderDeadStrategy;
 import model.strategyPattern.SnakeRenderStrategy;
 import view.GameBoard;
 
@@ -44,9 +45,10 @@ public class Snake extends GameElement {
             composite.add(body);
         }
 
-        moveStrategy = new SnakeMoveAliveStrategy(this);
-        //moveStrategy = new SnakeMoveDeadStrategy(this);
-        renderStrategy = new SnakeRenderAliveStrategy(this);
+        //moveStrategy = new SnakeMoveAliveStrategy(this);
+        moveStrategy = new SnakeMoveDeadStrategy(this);
+        //renderStrategy = new SnakeRenderAliveStrategy(this);
+        renderStrategy = new SnakeRenderDeadStrategy(this);
 
     }
 
