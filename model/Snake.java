@@ -45,10 +45,11 @@ public class Snake extends GameElement {
             composite.add(body);
         }
 
-        //moveStrategy = new SnakeMoveAliveStrategy(this);
-        moveStrategy = new SnakeMoveDeadStrategy(this);
-        //renderStrategy = new SnakeRenderAliveStrategy(this);
-        renderStrategy = new SnakeRenderDeadStrategy(this);
+        //snake strategy or state 
+        moveStrategy = new SnakeMoveAliveStrategy(this);
+        //moveStrategy = new SnakeMoveDeadStrategy(this);
+        renderStrategy = new SnakeRenderAliveStrategy(this);
+        //renderStrategy = new SnakeRenderDeadStrategy(this);
 
     }
 

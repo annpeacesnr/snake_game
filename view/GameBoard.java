@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Container;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +12,7 @@ import javax.swing.Timer;
 import controller.ButtonClickListener;
 import controller.KeyController;
 import controller.TimerListener;
+import model.Food;
 import model.Snake;
 
 import java.awt.BorderLayout;
@@ -80,6 +82,18 @@ public class GameBoard {
         timer.start();
     }
 
+    public void createFood() {    //generate location randomly according to grid
+        Random random = new Random();
+        int xloc, yloc;
+        do {
+            xloc = random.nextInt(GameBoard.WIDTH / GameBoard.CELL_SIZE) * GameBoard.CELL_SIZE;
+            yloc = random.nextInt(GameBoard.HEIGHT / GameBoard.CELL_SIZE) * GameBoard.CELL_SIZE;
+        } while (xloc == snake.x && yloc == snake.y);
+
+        Food food = new Food(xloc, yloc, Color.pink); //avoiding the snake head and body
+        canvas.getFigures().add(food);
+    
+        }
 
     public MyCanvas getCanvas() {
         return canvas;
