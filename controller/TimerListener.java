@@ -7,6 +7,7 @@ import model.Food;
 import model.GameElement;
 import model.Snake;
 import model.SnakeBody;
+import model.Snake.Event;
 import view.GameBoard;
 
 import java.awt.event.ActionEvent;
@@ -48,6 +49,7 @@ public class TimerListener implements ActionListener {
             if (f instanceof Food) {
                 removeFoods.add(f); // remove food
                 snake.getComposite().add(new SnakeBody(-100, -100)); // increase snake body size
+                snake.notifyObservers(Event.AteFood);
             }              
             }
         }

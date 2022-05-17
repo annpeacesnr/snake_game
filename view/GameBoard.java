@@ -33,6 +33,7 @@ public class GameBoard {
     private JButton stopButton = new JButton("Stop");
     private JButton exitButton = new JButton("Exit");
     private JLabel scoreDisplay = new JLabel();
+    private int score = 0; // instance member explicitly defined
     private Timer timer;
 
     private Snake snake = new Snake(0, 0); // create snake object
@@ -50,6 +51,7 @@ public class GameBoard {
         JPanel northPanel = new JPanel();
         JLabel label = new JLabel("Score: ");
         northPanel.add(label);
+        scoreDisplay.setText("" + score);
         northPanel.add(scoreDisplay);
         cp.add(BorderLayout.NORTH, northPanel);
 
@@ -117,6 +119,18 @@ public class GameBoard {
 
     public JButton getExitButton() {
         return exitButton;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public JLabel getScoreDisplay() {
+        return scoreDisplay;
     }
     
 }

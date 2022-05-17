@@ -12,7 +12,10 @@ public class SnakeObserver implements Observer {
 
     @Override
     public void snakeAteFood() {
-        // TODO Auto-generated method stub
+        int score = gameBoard.getScore();
+        ++score;
+        gameBoard.setScore(score);
+        gameBoard.getScoreDisplay().setText("" + score);
         
     }
 
