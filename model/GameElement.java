@@ -3,6 +3,7 @@ package model;
 //import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
+import java.awt.Graphics;
 
 public abstract class GameElement {
 
@@ -23,7 +24,7 @@ public abstract class GameElement {
         return false;
     }
     
-    public abstract void render(Graphics2D g2);
+    public abstract void render(Graphics g2);
     public abstract void move();
 
     }

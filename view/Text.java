@@ -4,6 +4,7 @@ import model.GameElement;
 
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Graphics;
 
 public class Text extends GameElement {
 
@@ -15,7 +16,7 @@ public class Text extends GameElement {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(Graphics g2) {
         g2.setColor(super.color);
         g2.setFont(new Font("Courier", Font.BOLD, 30));
         g2.drawString(message, super.x, super.y);
