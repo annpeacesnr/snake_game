@@ -2,11 +2,14 @@ package model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import model.strategyPattern.SnakeMoveAliveStrategy;
 import model.strategyPattern.SnakeMoveDeadStrategy;
 import model.strategyPattern.SnakeMoveStrategy;
+import model.strategyPattern.SnakeRenderAliveStrategy;
+import model.strategyPattern.SnakeRenderStrategy;
 import view.GameBoard;
 
 public class Snake extends GameElement {
@@ -23,6 +26,7 @@ public class Snake extends GameElement {
     public Direction direction =  Direction.RIGHT;
 
     private SnakeMoveStrategy moveStrategy;
+    private SnakeRenderStrategy renderStrategy;
 
     public void init() { //reset the starting conditions
         direction = Direction.RIGHT; //starting direction of snake
@@ -40,8 +44,9 @@ public class Snake extends GameElement {
             composite.add(body);
         }
 
-        //moveStrategy = new SnakeMoveAliveStrategy(this);
-        moveStrategy = new SnakeMoveDeadStrategy(this);
+        moveStrategy = new SnakeMoveAliveStrategy(this);
+        //moveStrategy = new SnakeMoveDeadStrategy(this);
+        renderStrategy = new SnakeRenderAliveStrategy(this);
 
     }
 
@@ -62,18 +67,14 @@ public class Snake extends GameElement {
 
     @Override
     public void render(Graphics g2) {
-        for (var b: composite) {
-            b.render(g2);
+        this.renderStrategy.renderAlgorithm(g2);
         }
         
-    }
+    
 
     @Override
     public void move() {
         this.moveStrategy.moveAlgorithm(); //alive strategy
         
     }
-
-
-    
 }
