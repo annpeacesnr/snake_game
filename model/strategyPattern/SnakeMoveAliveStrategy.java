@@ -23,15 +23,19 @@ public class SnakeMoveAliveStrategy implements SnakeMoveStrategy {
         switch(snake.direction) {
             case LEFT:
                 composite.get(0).x -= GameBoard.CELL_SIZE;
+                snake.x = composite.get(0).x;
                 break;
             case RIGHT:
                 composite.get(0).x += GameBoard.CELL_SIZE;
+                snake.x = composite.get(0).x;
                 break;
             case UP:
                 composite.get(0).y -= GameBoard.CELL_SIZE;
+                snake.y = composite.get(0).y;
                 break;
             case DOWN:
                 composite.get(0).y += GameBoard.CELL_SIZE;
+                snake.y = composite.get(0).y;
                 break;
         }
         

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import model.strategyPattern.SnakeMoveAliveStrategy;
+import model.strategyPattern.SnakeMoveDeadStrategy;
 import model.strategyPattern.SnakeMoveStrategy;
 import view.GameBoard;
 
@@ -39,7 +40,8 @@ public class Snake extends GameElement {
             composite.add(body);
         }
 
-        moveStrategy = new SnakeMoveAliveStrategy(this);
+        //moveStrategy = new SnakeMoveAliveStrategy(this);
+        moveStrategy = new SnakeMoveDeadStrategy(this);
 
     }
 
