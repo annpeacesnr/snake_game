@@ -26,6 +26,7 @@ public class ButtonClickListener implements ActionListener {
             gameBoard.getCanvas().getFigures().add(gameBoard.getSnake());
             gameBoard.createFood(); 
             gameBoard.setScore(0);
+            gameBoard.getScoreDisplay().setText("0");
             gameBoard.setGameOver(false);
         } else if (button == gameBoard.getStopButton()) {
             String label = button.getText();
