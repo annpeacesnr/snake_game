@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import model.observerPattern.Observer;
+import model.observerPattern.Subject;
 import model.strategyPattern.SnakeMoveAliveStrategy;
 import model.strategyPattern.SnakeMoveDeadStrategy;
 import model.strategyPattern.SnakeMoveStrategy;
@@ -13,13 +15,18 @@ import model.strategyPattern.SnakeRenderDeadStrategy;
 import model.strategyPattern.SnakeRenderStrategy;
 import view.GameBoard;
 
-public class Snake extends GameElement {
+public class Snake extends GameElement implements Subject {
 
     public enum Direction {
         LEFT, RIGHT, UP, DOWN
     }
 
+    public enum Event {
+        AteFood, AtePoison, LeftScene, SelfCollision
+    }
+
     public ArrayList<GameElement> composite = new ArrayList<>();
+    private ArrayList<Observer> observers = new ArrayList<>();
     private final int INIT_XLOC = GameBoard.CELL_SIZE * 7;
     private final int INIT_YLOC = GameBoard.CELL_SIZE * 3;
     private final int INIT_BODY_SIZE = 3;
@@ -78,6 +85,24 @@ public class Snake extends GameElement {
     @Override
     public void move() {
         this.moveStrategy.moveAlgorithm(); //alive strategy
+        
+    }
+
+    @Override
+    public void addSnakeListener(Observer o) {
+        observers.add(o);
+        
+    }
+
+    @Override
+    public void removeSnakeListener(Observer o) {
+        observers.remove(o);
+        
+    }
+
+    @Override
+    public void notifyObservers(Event event) {
+        // TODO Auto-generated method stub
         
     }
 }
