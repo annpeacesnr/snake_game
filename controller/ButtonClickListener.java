@@ -36,6 +36,8 @@ public class ButtonClickListener implements ActionListener {
                 button.setText("Stop");
                 gameBoard.getTimer().start();
             }
+        } else if (button == gameBoard.getExitButton()) {
+            System.exit(0); // exit method
         }
     }
     
