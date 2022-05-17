@@ -45,6 +45,11 @@ public class TimerListener implements ActionListener {
         if (snake.x < 0 || snake.x >= GameBoard.WIDTH || snake.y < 0 || snake.y >= GameBoard.HEIGHT)
             snake.notifyObservers(Event.LeftScene);
 
+        // snake self collision - head collides with body
+        if (snake.selfCollision())
+            snake.notifyObservers(Event.SelfCollision);
+
+
         // snake vs food
         var removeFoods = new ArrayList<GameElement>();
         for (var f: figures) {

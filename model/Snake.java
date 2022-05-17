@@ -120,8 +120,21 @@ public class Snake extends GameElement implements Subject {
             }
                 break;
             case SelfCollision:
+            for (var o: observers) {
+                o.snakeSelfCollision();
+            }
                 break;
         }
         
     }
+
+    public boolean selfCollision() { // checks whether head collides with body
+        GameElement head = composite.get(0);
+        for (int i = 1; i < composite.size(); i++) {
+            var body = composite.get(i);
+            if (head.collideWith(body)) return true;
+
+    }
+    return false;
+}
 }

@@ -39,7 +39,11 @@ public class SnakeObserver implements Observer {
 
     @Override
     public void snakeSelfCollision() {
-        // TODO Auto-generated method stub
+        gameBoard.getCanvas().getFigures().add(new Text("Game Over - self collision!", 100, 200));
+        Snake snake = gameBoard.getSnake();
+        snake.setMoveStrategy(new SnakeMoveDeadStrategy(snake));
+        snake.setRenderStrategy(new SnakeRenderDeadStrategy(snake));
+        
         
     }
     
