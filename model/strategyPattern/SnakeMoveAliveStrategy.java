@@ -1,10 +1,39 @@
 package model.strategyPattern;
 
+import model.Snake;
+import view.GameBoard;
+
 public class SnakeMoveAliveStrategy implements SnakeMoveStrategy {
+
+    private Snake snake;
+
+    public SnakeMoveAliveStrategy(Snake snake) {
+        this.snake = snake;
+        
+    }
 
     @Override
     public void moveAlgorithm() {
-        // TODO Auto-generated method stub
+        var composite = snake.getComposite();
+        for (int i = composite.size() - 1; i > 0; i--) { // move through the index backwards
+            composite.get(i).x = composite.get(i - 1).x;
+            composite.get(i).y = composite.get(i - 1).y;
+        }
+
+        switch(snake.direction) {
+            case LEFT:
+                composite.get(0).x -= GameBoard.CELL_SIZE;
+                break;
+            case RIGHT:
+                composite.get(0).x += GameBoard.CELL_SIZE;
+                break;
+            case UP:
+                composite.get(0).y -= GameBoard.CELL_SIZE;
+                break;
+            case DOWN:
+                composite.get(0).y += GameBoard.CELL_SIZE;
+                break;
+        }
         
     }
     

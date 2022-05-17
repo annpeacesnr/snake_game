@@ -24,7 +24,7 @@ public class Snake extends GameElement {
     private SnakeMoveStrategy moveStrategy;
 
     public void init() { //reset the starting conditions
-        direction = Direction.RIGHT;
+        direction = Direction.DOWN; //starting direction of snake
         composite.clear();
         super.x = INIT_XLOC;
         super.y = INIT_YLOC;
@@ -39,7 +39,7 @@ public class Snake extends GameElement {
             composite.add(body);
         }
 
-        moveStrategy = new SnakeMoveAliveStrategy();
+        moveStrategy = new SnakeMoveAliveStrategy(this);
 
     }
 
@@ -52,6 +52,11 @@ public class Snake extends GameElement {
     public void setMoveStrategy(SnakeMoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
     }
+
+    public ArrayList<GameElement> getComposite() {
+        return composite;
+    }
+    
 
     @Override
     public void render(Graphics g2) {
@@ -66,5 +71,7 @@ public class Snake extends GameElement {
         this.moveStrategy.moveAlgorithm(); //alive strategy
         
     }
+
+
     
 }
