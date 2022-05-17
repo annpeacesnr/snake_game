@@ -35,6 +35,7 @@ public class GameBoard {
     private JLabel scoreDisplay = new JLabel();
     private int score = 0; // instance member explicitly defined
     private Timer timer;
+    private boolean gameOver;
 
     private Snake snake = new Snake(0, 0); // create snake object
 
@@ -131,6 +132,14 @@ public class GameBoard {
 
     public JLabel getScoreDisplay() {
         return scoreDisplay;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
+    public boolean isGameOver() {   // getter for boolean type - check if game is over to prevent looping
+        return gameOver;
     }
     
 }

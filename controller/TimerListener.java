@@ -26,7 +26,9 @@ public class TimerListener implements ActionListener {
         for (var f: gameBoard.getCanvas().getFigures()) {
             f.move(); // move method to move each element accross screen 
         }
+        if (!gameBoard.isGameOver()) // if game is not over 
         detectCollision();   // detect collisions
+
         gameBoard.getCanvas().repaint(); // redraw the whole screen
         }
 
@@ -42,12 +44,15 @@ public class TimerListener implements ActionListener {
         if (snake == null) return;
 
         // check if snake left game scene
-        if (snake.x < 0 || snake.x >= GameBoard.WIDTH || snake.y < 0 || snake.y >= GameBoard.HEIGHT)
+        if (snake.x < 0 || snake.x >= GameBoard.WIDTH || snake.y < 0 || snake.y >= GameBoard.HEIGHT) {
             snake.notifyObservers(Event.LeftScene);
+            gameBoard.setGameOver(true);
+        }
 
         // snake self collision - head collides with body
         if (snake.selfCollision())
             snake.notifyObservers(Event.SelfCollision);
+            gameBoard.setGameOver(true);
 
 
         // snake vs food
