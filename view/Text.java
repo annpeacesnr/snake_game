@@ -24,7 +24,9 @@ public class Text extends GameElement {
     }
     
     @Override
-    public void move() {
+    public void move() { // move method for startup text
+        ++x;
+        ++y;
         
     }
 }

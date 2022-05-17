@@ -25,7 +25,7 @@ public abstract class GameElement {
     }
     
     public abstract void render(Graphics g2);
-    public abstract void move();
+    public abstract void move(); // move method for startup text graphic
 
     }
     
