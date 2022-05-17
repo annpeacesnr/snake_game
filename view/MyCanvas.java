@@ -32,5 +32,10 @@ public class MyCanvas extends JPanel {
             f.render(g2);
         }
     }
+
+
+    public ArrayList<GameElement> getFigures() {
+        return figures;
+    }
     
 }

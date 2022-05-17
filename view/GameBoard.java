@@ -8,9 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+
 import controller.TimerListener;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 public class GameBoard {
 
@@ -49,8 +51,16 @@ public class GameBoard {
         southPanel.add(exitButton);
         cp.add(BorderLayout.SOUTH, southPanel);
 
+        Text t1 = new Text("Click <start> to play", 100, 100);
+        t1.color = Color.YELLOW;
+        canvas.getFigures().add(t1);
+
         Timer timer = new Timer(DELAY, new TimerListener(this));
         timer.start();
+    }
+
+    public MyCanvas getCanvas() {
+        return canvas;
     }
     
 }
