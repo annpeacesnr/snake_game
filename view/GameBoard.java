@@ -14,6 +14,7 @@ import controller.KeyController;
 import controller.TimerListener;
 import model.Food;
 import model.Snake;
+import model.observerPattern.SnakeObserver;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -77,6 +78,9 @@ public class GameBoard {
         label.setFocusable(false);
         scoreDisplay.setFocusable(false);
         //safety component for every component apart from game canvas
+
+        SnakeObserver observer = new SnakeObserver(this); // snake observer 
+        snake.addSnakeListener(observer);
 
         Timer timer = new Timer(DELAY, new TimerListener(this));
         timer.start();
