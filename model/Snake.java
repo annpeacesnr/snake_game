@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import model.strategyPattern.SnakeMoveAliveStrategy;
+import model.strategyPattern.SnakeMoveStrategy;
 import view.GameBoard;
 
 public class Snake extends GameElement {
@@ -18,6 +20,8 @@ public class Snake extends GameElement {
     private final int INIT_BODY_SIZE = 3;
 
     public Direction direction =  Direction.RIGHT;
+
+    private SnakeMoveStrategy moveStrategy;
 
     public void init() { //reset the starting conditions
         direction = Direction.RIGHT;
@@ -35,6 +39,8 @@ public class Snake extends GameElement {
             composite.add(body);
         }
 
+        moveStrategy = new SnakeMoveAliveStrategy();
+
     }
 
     public Snake(int x, int y) {
@@ -43,6 +49,9 @@ public class Snake extends GameElement {
     }
 
    
+    public void setMoveStrategy(SnakeMoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+    }
 
     @Override
     public void render(Graphics g2) {
@@ -54,7 +63,7 @@ public class Snake extends GameElement {
 
     @Override
     public void move() {
-        // TODO Auto-generated method stub
+        this.moveStrategy.moveAlgorithm(); //alive strategy
         
     }
     
