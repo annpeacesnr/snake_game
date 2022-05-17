@@ -141,5 +141,9 @@ public class GameBoard {
     public boolean isGameOver() {   // getter for boolean type - check if game is over to prevent looping
         return gameOver;
     }
+
+    public Timer getTimer() {
+        return timer;
+    }
     
 }

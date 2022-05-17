@@ -1,5 +1,8 @@
 package controller;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
 import java.awt.event.ActionEvent;
 
 import view.GameBoard;
@@ -16,15 +19,24 @@ public class ButtonClickListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == gameBoard.getStartButton()) {
+        JButton button = (JButton) e.getSource();
+        if (button == gameBoard.getStartButton()) {
             gameBoard.getCanvas().getFigures().clear();
             gameBoard.getSnake().init();
             gameBoard.getCanvas().getFigures().add(gameBoard.getSnake());
             gameBoard.createFood(); 
             gameBoard.setScore(0);
             gameBoard.setGameOver(false);
+        } else if (button == gameBoard.getStopButton()) {
+            String label = button.getText();
+            if (label.equals("Stop")) {
+                button.setText("Resume");
+                gameBoard.getTimer().stop();
+            } else {
+                button.setText("Stop");
+                gameBoard.getTimer().start();
+            }
         }
-
     }
     
 }
