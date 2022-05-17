@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import controller.ButtonClickListener;
+import controller.KeyController;
 import controller.TimerListener;
 import model.Snake;
 
@@ -62,9 +63,23 @@ public class GameBoard {
         ButtonClickListener buttonListener = new ButtonClickListener(this);
         startButton.addActionListener(buttonListener);
 
+        KeyController keyController = new KeyController(this);
+        canvas.addKeyListener(keyController);
+        canvas.requestFocusInWindow();
+        canvas.setFocusable(true);
+
+        //disable focusable in other component otherwise focus is lost on click of buttons 
+        startButton.setFocusable(false);
+        stopButton.setFocusable(false);
+        exitButton.setFocusable(false);
+        label.setFocusable(false);
+        scoreDisplay.setFocusable(false);
+        //safety component for every component apart from game canvas
+
         Timer timer = new Timer(DELAY, new TimerListener(this));
         timer.start();
     }
+
 
     public MyCanvas getCanvas() {
         return canvas;

@@ -24,7 +24,7 @@ public class Snake extends GameElement {
     private SnakeMoveStrategy moveStrategy;
 
     public void init() { //reset the starting conditions
-        direction = Direction.DOWN; //starting direction of snake
+        direction = Direction.RIGHT; //starting direction of snake
         composite.clear();
         super.x = INIT_XLOC;
         super.y = INIT_YLOC;
