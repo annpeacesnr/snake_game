@@ -88,7 +88,7 @@ public class Snake extends GameElement implements Subject {
 
     @Override
     public void move() {
-        this.moveStrategy.moveAlgorithm(); //alive strategy
+        this.moveStrategy.moveAlgorithm(); //move strategy
         
     }
 
