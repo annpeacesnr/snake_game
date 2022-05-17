@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -23,11 +24,15 @@ public class Snake extends GameElement {
         composite.clear();
         super.x = INIT_XLOC;
         super.y = INIT_YLOC;
-        composite.add(new SnakeHead(super.x, super.y));
+        var head = new SnakeHead(super.x, super.y);
+        head.color = Color.YELLOW;
+        composite.add(head);
         for (int i = 1; i <= INIT_BODY_SIZE; i++) {
             int x = INIT_XLOC - i * GameBoard.CELL_SIZE;
             int y = INIT_YLOC;
-            composite.add(new SnakeBody(x, y));
+            var body = new SnakeBody(x, y);
+            body.color = Color.white;
+            composite.add(body);
         }
 
     }
