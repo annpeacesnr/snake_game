@@ -2,8 +2,6 @@ package model;
 
 import java.awt.Graphics;
 
-import javax.lang.model.util.ElementScanner14;
-
 import view.GameBoard;
 
 public class SnakeHead extends GameElement {
